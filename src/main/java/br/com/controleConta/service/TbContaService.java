@@ -6,12 +6,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.controleConta.entity.TbConta;
 import br.com.controleConta.service.impl.ItbContaService;
 
 @Service
+@Transactional
 public class TbContaService {
 	
 	@Autowired
@@ -24,7 +25,7 @@ public class TbContaService {
 		return tbContas;
 	}
 		
-	public Optional<TbConta> getTbConta(String id) {
+	public Optional<TbConta> getTbConta(int id) throws Exception, Throwable {
 		return itbContaService.findById(id);
 	}
 	
@@ -36,7 +37,7 @@ public class TbContaService {
 		itbContaService.save(tbConta);
 	}
 	
-	public void deleteTbConta(String id) {
+	public void deleteTbConta(int id) throws Exception, Throwable {
 		itbContaService.deleteById(id);
 	}
 	

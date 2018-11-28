@@ -45,15 +45,16 @@ public class TbContaController {
 	
 	/**
 	 * 
-	 * @param idConta
+	 * @param id
 	 * @return
 	 * @throws Exception
 	 * @throws Throwable
 	 */
 	@RequestMapping(value="/tbConta/{id}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public @ResponseBody Optional<TbConta> getTbConta(@PathVariable String id)  throws Exception, Throwable {
+	public @ResponseBody Optional<TbConta> getTbConta(@PathVariable("id") String id)  throws Exception, Throwable {
 				
-		return tbContaService.getTbConta(id);
+		int idConta = Integer.parseInt(id);
+		return tbContaService.getTbConta(idConta);
 	}
 	
 	
@@ -75,7 +76,7 @@ public class TbContaController {
 	/**
 	 * 
 	 * @param tbConta
-	 * @return
+	 * @param id
 	 * @throws Exception
 	 * @throws Throwable
 	 */
@@ -89,14 +90,14 @@ public class TbContaController {
 	/**
 	 * 
 	 * @param id
-	 * @return
 	 * @throws Exception
 	 * @throws Throwable
 	 */
 	@RequestMapping(value="/tbConta/{id}", method = RequestMethod.DELETE, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void delete(@PathVariable String id)  throws Exception, Throwable { 
+	public void delete(@PathVariable("id") String id)  throws Exception, Throwable { 
 						
-		tbContaService.deleteTbConta(id);
+		int idConta = Integer.parseInt(id);
+		tbContaService.deleteTbConta(idConta);
 	}	
 
 }

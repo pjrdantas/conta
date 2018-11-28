@@ -1,6 +1,8 @@
 package br.com.controleConta.entity;
 
-import java.io.Serializable; 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -11,58 +13,66 @@ public class TbConta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String id;
-	private String dataCriacao;
-	private String cnpj;
+	private int id;
+	private String nomeConta;
+	private Date dataCriacao;
+	private BigDecimal cnpj;
 	private String nomeFantasia;
-	private String cpf;
+	private BigDecimal cpf;
 	private String nomeCompleto;
-	private String dataNascimento;
-	private String tipo;
-	private String contaMae;
+	private Date dataNascimento;
+	private String tipoConta;
+	private int contaMae;
 	private String status;
-	private String saldo;
+
 
 	public TbConta() {
 	}
 
-	public TbConta(String id, String dataCriacao, String cnpj, String nomeFantasia, String cpf, String nomeCompleto,
-			String tipo, String contaMae, String dataNascimento, String status, String saldo) {
+	public TbConta(int id, String nomeConta, Date dataCriacao, BigDecimal cnpj, String nomeFantasia, BigDecimal cpf, String nomeCompleto,
+			Date dataNascimento, String tipoConta, int contaMae, String status) {
 		super();
 		this.id = id;
+		this.nomeConta = nomeConta;
 		this.dataCriacao = dataCriacao;
 		this.cnpj = cnpj;
 		this.nomeFantasia = nomeFantasia;
-		this.cnpj = cpf;
 		this.nomeCompleto = nomeCompleto;
 		this.dataNascimento = dataNascimento;
-		this.tipo = tipo;
+		this.tipoConta = tipoConta;
 		this.contaMae = contaMae;
-		this.status = status;
-		this.saldo = saldo;
+		this.status = status;		
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
-	public String getDataCriacao() {
+	public String getNomeConta() {
+		return nomeConta;
+	}
+
+	public void setNomeConta(String nomeConta) {
+		this.nomeConta = nomeConta;
+	}
+
+	public Date getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(String dataCriacao) {
+	public void setDataCriacao(Date dataCriacao) {
 		this.dataCriacao = dataCriacao;
 	}
 
-	public String getCnpj() {
+	public BigDecimal getCnpj() {
 		return cnpj;
 	}
 
-	public void setCnpj(String cnpj) {
+	public void setCnpj(BigDecimal cnpj) {
 		this.cnpj = cnpj;
 	}
 
@@ -74,11 +84,11 @@ public class TbConta implements Serializable {
 		this.nomeFantasia = nomeFantasia;
 	}
 
-	public String getCpf() {
+	public BigDecimal getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(BigDecimal cpf) {
 		this.cpf = cpf;
 	}
 
@@ -90,27 +100,27 @@ public class TbConta implements Serializable {
 		this.nomeCompleto = nomeCompleto;
 	}
 
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public String getTipoConta() {
+		return tipoConta;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setTipoConta(String tipoConta) {
+		this.tipoConta = tipoConta;
 	}
 
-	public String getContaMae() {
+	public int getContaMae() {
 		return contaMae;
 	}
 
-	public void setContaMae(String contaMae) {
+	public void setContaMae(int contaMae) {
 		this.contaMae = contaMae;
 	}
 
@@ -124,14 +134,6 @@ public class TbConta implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	public String getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(String saldo) {
-		this.saldo = saldo;
 	}
 
 }
