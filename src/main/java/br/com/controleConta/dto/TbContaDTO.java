@@ -1,14 +1,12 @@
-package br.com.controleConta.entity;
+package br.com.controleConta.dto;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
-public class TbConta implements Serializable {
+public class TbContaDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -24,13 +22,18 @@ public class TbConta implements Serializable {
 	private String tipoConta;
 	private int contaMae;
 	private String status;
+	private int aporte;
+	private int codigoTransacao;
+	private String descricaoTransacao;
+	private BigDecimal saldo;
 
-	public TbConta() {
+	public TbContaDTO() {
 	}
 
-	public TbConta(int id, String nomeConta, Date dataCriacao, BigDecimal cnpj, String nomeFantasia, BigDecimal cpf,
-			String nomeCompleto, Date dataNascimento, String tipoConta, int contaMae, String status) {
+	public TbContaDTO(int id, String nomeConta, Date dataCriacao, BigDecimal cnpj, String nomeFantasia, BigDecimal cpf,
+			String nomeCompleto, Date dataNascimento, String tipoConta, int contaMae, String status, int aporte, int codigoTransacao,String descricaoTransacao, BigDecimal saldo) {
 		super();
+		
 		this.id = id;
 		this.nomeConta = nomeConta;
 		this.dataCriacao = dataCriacao;
@@ -41,6 +44,10 @@ public class TbConta implements Serializable {
 		this.tipoConta = tipoConta;
 		this.contaMae = contaMae;
 		this.status = status;
+		this.aporte = aporte;
+		this.codigoTransacao = codigoTransacao;
+		this.descricaoTransacao = descricaoTransacao;
+		this.saldo = saldo;		
 	}
 
 	public int getId() {
@@ -131,8 +138,41 @@ public class TbConta implements Serializable {
 		this.status = status;
 	}
 
+	public int getAporte() {
+		return aporte;
+	}
+
+	public void setAporte(int aporte) {
+		this.aporte = aporte;
+	}
+
+	public int getCodigoTransacao() {
+		return codigoTransacao;
+	}
+
+	public void setCodigoTransacao(int codigoTransacao) {
+		this.codigoTransacao = codigoTransacao;
+	}
+
+	public String getDescricaoTransacao() {
+		return descricaoTransacao;
+	}
+
+	public void setDescricaoTransacao(String descricaoTransacao) {
+		this.descricaoTransacao = descricaoTransacao;
+	}
+
+	public BigDecimal getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(BigDecimal saldo) {
+		this.saldo = saldo;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+	
+	
 }

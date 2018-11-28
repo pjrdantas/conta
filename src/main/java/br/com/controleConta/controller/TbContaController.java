@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import br.com.controleConta.entity.TbConta;
+import br.com.controleConta.response.ResponseModel;
 import br.com.controleConta.service.TbContaService;
 
 
@@ -27,6 +27,12 @@ public class TbContaController {
 	@Autowired
 	TbContaService tbContaService;
 	
+	
+	
+	
+	
+	int codigo;
+	String mensagem;
 	
 	
 	/**
@@ -65,14 +71,40 @@ public class TbContaController {
 	 * @throws Throwable
 	 */
 	@RequestMapping(value="/tbConta", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE,produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public void addTbConta(@RequestBody TbConta tbConta)  throws Exception, Throwable {
+	public @ResponseBody ResponseModel  addTbConta(@RequestBody TbConta tbConta)  throws Exception, Throwable {
 		
+		try {
+			codigo = 1;
+			mensagem = null;
 		
-		tbContaService.addTbConta(tbConta);
+			
+			if (tbConta.getTipoConta().contains("Conta Matriz")) {				
+				tbContaService.addTbConta(tbConta);
+				codigo = 200;
+				mensagem = "CONTA MATRIZ SALVA COM SUCESSO!";
+		
+			} else {
+				if (tbConta.getContaMae() == 0) {
+					codigo = 500;
+					mensagem = "NÃO FOI POSSIVEL IDENTIFICAR A CONTA MATRIZ!";
+				} else {
+					tbContaService.addTbConta(tbConta);
+					codigo = 200;
+	
+				}
+			}
+			
+			
 
+			return new ResponseModel(codigo, mensagem);
+		} catch (Exception e) {
+			return new ResponseModel(0, e.getMessage());
+		}
 	}
 	
-	
+
+
+
 	/**
 	 * 
 	 * @param tbConta

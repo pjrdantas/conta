@@ -13,7 +13,7 @@ public class TbMovimentacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private int id;	
+	private int id;
 	private int idContaDestino;
 	private int idContaOrigem;
 	private Date dataMovimentacao;
@@ -23,14 +23,12 @@ public class TbMovimentacao implements Serializable {
 	private BigDecimal debito;
 	private BigDecimal credito;
 	private BigDecimal saldo;
-	
-	
-	
+
 	public TbMovimentacao() {
 	}
 
-	public TbMovimentacao(int id, int idContaDestino, int idContaOrigem, Date dataMovimentacao, int codigoTransacao, int aporte, String descricaoTransacao, BigDecimal debito,
-			BigDecimal credito, BigDecimal saldo) {
+	public TbMovimentacao(int id, int idContaDestino, int idContaOrigem, Date dataMovimentacao, int codigoTransacao,
+			int aporte, String descricaoTransacao, BigDecimal debito, BigDecimal credito, BigDecimal saldo) {
 		super();
 		this.id = id;
 		this.idContaDestino = idContaDestino;
@@ -128,5 +126,4 @@ public class TbMovimentacao implements Serializable {
 		return serialVersionUID;
 	}
 
-	
 }
